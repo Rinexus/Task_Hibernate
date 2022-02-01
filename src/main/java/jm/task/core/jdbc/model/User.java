@@ -22,10 +22,11 @@ public class User {
 
     }
 
-    public User(String name, String lastName, Byte age) {
+    public User(String name, String lastName, Byte age, Long id) {
         this.name = name;
         this.lastName = lastName;
         this.age = age;
+        this.id = id;
     }
 
     public Long getId() {
@@ -58,5 +59,37 @@ public class User {
 
     public void setAge(Byte age) {
         this.age = age;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", age=" + age +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        User user = (User) o;
+
+        if (id != null ? !id.equals(user.id) : user.id != null) return false;
+        if (name != null ? !name.equals(user.name) : user.name != null) return false;
+        if (lastName != null ? !lastName.equals(user.lastName) : user.lastName != null) return false;
+        return age != null ? age.equals(user.age) : user.age == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = id != null ? id.hashCode() : 0;
+        result = 31 * result + (name != null ? name.hashCode() : 0);
+        result = 31 * result + (lastName != null ? lastName.hashCode() : 0);
+        result = 31 * result + (age != null ? age.hashCode() : 0);
+        return result;
     }
 }
