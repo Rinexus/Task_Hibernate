@@ -3,7 +3,6 @@ package jm.task.core.jdbc.util;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.sql.Statement;
 
 
 public class Util {
@@ -15,9 +14,9 @@ public class Util {
 
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection conn =  DriverManager.getConnection(connectionUrl, userName, password);
-            conn.setAutoCommit(true);
-            return conn;
+            Connection connection =  DriverManager.getConnection(connectionUrl, userName, password);
+            connection.setAutoCommit(true);
+            return connection;
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         }
